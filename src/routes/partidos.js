@@ -13,6 +13,6 @@ router.put('/api/date/:id', updateDate)
 
 router.put('/api/updatePartido/:id', updatePartidp)
 
-router.put('/api/finishPartido:id', finishPartido)
+router.put('/api/finishPartido/:id', finishPartido)
 
 export default router
