@@ -3,13 +3,15 @@ import Partido from '../models/partidos.js'
 import Pronostico from '../models/pronostico.js'
 import Usuario from '../models/usuarios.js'
 
-export async function updateGoles (req, res) {
+export async function updatePartidp (req, res) {
   try {
-    const { golesLocal, golesVisita } = req.body
+    const { golesLocal, golesVisita, status, isPlaying } = req.body
 
     const partidoUpdate = await Partido.findByIdAndUpdate(req.params.id, {
       golesLocal,
-      golesVisita
+      golesVisita,
+      status,
+      isPlaying
     }, { new: true })
 
     return res.status(200).send(partidoUpdate)
@@ -32,9 +34,7 @@ export const updateDate = async (req, res) => {
   }
 }
 
-export const startedGame = async (req, res) => await Partido.findByIdAndUpdate(req.params.id, { status: false, isPlaying: true }, { new: true })
-
-export async function updatePartido (req, res) {
+export async function finishPartido (req, res) {
   try {
     const partidoUpdate = await Partido.findByIdAndUpdate(req.params.id, {
       isFinish: true,
@@ -67,6 +67,7 @@ export async function updatePartido (req, res) {
     return res.status(200).send(partidoUpdate)
   } catch (error) {
     console.error(error)
+    return res.status(500).send(error)
   }
 }
 
