@@ -10,3 +10,7 @@ try {
 } catch (error) {
   console.error(error.message)
 }
+
+/*
+  MONGO_URI=mongodb+srv://ricardo:ricardo@cluster0.nkx21tm.mongodb.net/?retryWrites=true&w=majority
+*/
